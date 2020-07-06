@@ -1,0 +1,33 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . . 
+
+CMD ["npm", "run", "start"]
+
+# docker build -f Dockerfile.dev .
+
+# docker run -it -p 3000:3000 d261c26fb78d
+
+# docker run -it -p 3000:3000 -v /app/node_modules -v $(pwd):/app d261c26fb78d
+
+
+# docker run e2a078802c62 npm run test
+# docker run -it e2a078802c62 npm run test
+
+
+### 1) web
+## [terminal 1]
+# docker-compose up
+
+## [termianl 2]
+# docker exec -it 90d3d5fa299f npm run test
+
+### 2) test (can't manipulate the test command on live)
+# docker-compose up --build
+# docker ps
+# docker exec -it 22556fd7ce68 sh 
